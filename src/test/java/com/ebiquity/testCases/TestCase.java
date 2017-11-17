@@ -38,6 +38,7 @@ public class TestCase {
     }
 
     //Testcase. Change @invocationCount to run it for multiple Users.
+    //TODO: This test case runs 5 times. In order to run it more/less times change invocationCount.
     @Test(invocationCount = 5)
     public void ebiquityContactUs(ITestContext testContext) {
         int currentCount = testContext.getAllTestMethods()[0].getCurrentInvocationCount();
