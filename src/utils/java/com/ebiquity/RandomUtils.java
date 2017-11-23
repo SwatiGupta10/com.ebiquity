@@ -1,3 +1,11 @@
+/**
+ * RandomUtils.java - A utility class which provides methods to generate
+ * random text, numbers, etc.
+ *
+ * @author  Swati Gupta
+ * @version 1.0
+ */
+
 package utils.java.com.ebiquity;
 
 import java.util.Random;
@@ -18,15 +26,16 @@ public class RandomUtils {
     }
 
     /**
-     * Returns the probability of Heads/Tails in a fair coin toss.
+     * Returns a pseudo-random float [0.0, 1.0). Duplicate implementation of Random.nextDouble()
      *
      * @return float
      */
-    public static float getCoinTossProbability() {
+    public static float getRealBetween0and1() {
         Random random = new Random();
         int randomNum = random.nextInt(1000);
-        float probability = ((float)randomNum)/1000;
-        return probability;
+        float randomFloat = ((float)randomNum)/1000;
+        return randomFloat;
+
     }
 
 
@@ -43,7 +52,7 @@ public class RandomUtils {
         for (int i = 0; i < 10; i++) {
             char c;
             if(i == 0){
-                c = numericChars[random.nextInt(numericChars.length -1)];
+                c = numericChars[    random.nextInt(numericChars.length -1)     ];
             }
             else {
                 c = numericChars[random.nextInt(numericChars.length)];
@@ -85,6 +94,7 @@ public class RandomUtils {
 
     /**
      * Returns a String of randomly created E-mail Id.
+     *
      *
      * @return String
      */
@@ -133,7 +143,7 @@ public class RandomUtils {
             System.out.println(phoneNumber);
             output = getSentences();
             System.out.println(output);
-            System.out.println(getCoinTossProbability());
+            System.out.println(getRealBetween0and1());
             System.out.println(getRandomIntBetween(0, 100));
         }
     }
