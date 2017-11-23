@@ -1,3 +1,11 @@
+/**
+ * TestCase.java - A class which contains automated testcase(s) to test
+ * multi-user form filling at https://www.ebiquity.com/en/contact-us
+ *
+ * @author  Swati Gupta
+ * @version 1.0
+ */
+
 package test.java.com.ebiquity.testCases;
 
 import main.java.com.ebiquity.pages.BasePageLocators;
@@ -15,22 +23,22 @@ import java.util.concurrent.TimeUnit;
 public class TestCase {
 
     static final String drivers_path =  "resources" + File.separator + "drivers" ;
-    static Logger log = Logger.getLogger(TestCase.class);
+    Logger log = Logger.getLogger(TestCase.class);
 
-    static WebDriver driver;
-    private static String url = "https://www.ebiquity.com/en/contact-us";
-    private static BasePageLocators contactUs;
-    private static BasePageFieldsGenerator fieldsGen;
+    WebDriver driver;
+    private String url = "https://www.ebiquity.com/en/contact-us";
+    private BasePageLocators contactUs;
+    private BasePageFieldsGenerator fieldsGen;
 
     //Instantiate util class objects.
     @BeforeClass
-    public static void setupTest() {
+    public void setupTest() {
         fieldsGen = new BasePageFieldsGenerator();
     }
 
     //Setup Driver
     @BeforeMethod
-    public static void createDriver() {
+    public void createDriver() {
         driver = new FirefoxDriver();
         driver.navigate().to(url);
         contactUs = new BasePageLocators(driver);
@@ -38,8 +46,7 @@ public class TestCase {
     }
 
     //Testcase. Change @invocationCount to run it for multiple Users.
-    //TODO: This test case runs 5 times. In order to run it more/less times change invocationCount.
-    @Test(invocationCount = 5)
+    @Test(invocationCount = 5, priority=0)
     public void ebiquityContactUs(ITestContext testContext) {
         int currentCount = testContext.getAllTestMethods()[0].getCurrentInvocationCount();
         log.info("Starting Test run number: " + currentCount);
@@ -108,13 +115,13 @@ public class TestCase {
 
     //Quit the Driver.
     @AfterMethod
-    public static void quitDriver() {
+    public void quitDriver() {
         driver.quit();
     }
 
     //Release resources util class objects.
     @AfterClass
-    public static void quitSetup() {
+    public void quitSetup() {
         fieldsGen = null;
     }
 
